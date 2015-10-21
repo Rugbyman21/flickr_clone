@@ -7,11 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <% if current_user %>
+    <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+    <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+
+    <%= image_tag(current_user.avatar.url(:thumb)) %>
+    <% else %>
+  <li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <% end %>
+
+
+
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <%= link_to "Log in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 
 <%= yield %>
 

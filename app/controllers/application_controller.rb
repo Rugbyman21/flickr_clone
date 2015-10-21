@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) {
-        |u| u.permit(registration_params << :current_password)
+        |u| u.permit(registration_params << :current_password, :avatar)
       }
     elsif params[:action] == 'create'
       devise_parameter_sanitizer.for(:sign_up) {
@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+
     def after_sign_in_path_for(resource)
       user_path(@user)
     end
+
+
 end
