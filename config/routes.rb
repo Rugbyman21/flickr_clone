@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :users, only: [:index, :show, :update]
+  resources :users, only: [:index, :show, :update] do
+    resources :posts
+  end
   get '/users/:id' => "users#show"
 
 
