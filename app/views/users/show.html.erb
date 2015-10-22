@@ -3,4 +3,6 @@
   <% @user.posts.each do |post| %>
   <%= image_tag post.image.url(:medium) %> <br>
   <%= post.caption %>
+  <%= link_to "Delete Photo", user_post_path(@user, post), method: "delete" %>
+  <%= link_to "Edit Photo", edit_user_post_path(@user, post) %>
   <% end %>

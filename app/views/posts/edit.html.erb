@@ -1,0 +1,7 @@
+<h1>Edit Photo page</h1>
+
+<%= simple_form_for [@user, @post] do |f| %>
+<%= f.input :image %>
+<%= f.input :caption %>
+<%= f.button :submit %>
+<% end %>
